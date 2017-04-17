@@ -1,0 +1,73 @@
+.playlist-files-content{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.playlist-files{
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#pl-files{
+    width: 100%;
+}
+
+tr{
+    cursor: pointer;
+    background: rgba(5,5,5,.85);
+    opacity: 0.7;
+    /*color: #aaa;*/
+    color: white;
+
+    border-bottom: 1px #2a2a2a solid;
+    empty-cells: show;
+    /*font-size: 95%;*/
+    height: 2.83ex;
+    outline: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#pl-files .active{
+    background: rgba(200, 72, 39, 0.84);
+}
+
+table .num_file, table .checkbox_file {
+   width: 30px;
+}
+
+table .time-file {
+    width: 40px;
+}
+
+.playlist-files::-webkit-scrollbar-track {
+    border-radius: 4px;
+}
+
+.playlist-files::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist-files::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: #f0f2f5;
+}
+
+.playlist-files:hover::-webkit-scrollbar-thumb {
+    background: #6a7d9b;
+}

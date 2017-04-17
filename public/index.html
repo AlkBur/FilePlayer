@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache" >
+
+    <title>Audio player</title>
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/js/appjs.js"></script>
+    <script src="/js/socketjs.js"></script>
+    <script src="/js/audio.js"></script>
+</head>
+<body>
+    <div class="container">
+        <audio controls id="AudioPlayer" hidden="hidden"></audio>
+        <div class="player">
+            <div class="control-left">
+                <div id="previous-button" class="btnPlay shadowtext" title="Previous"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+                <div id="play-button" class="btnPlay shadowtext" title="Play"><i class="fa fa-play" aria-hidden="true"></i></div>
+                <div id="pause-button" class="btnPlay shadowtext" title="Pause"><i class="fa fa-pause" aria-hidden="true"></i></div>
+                <div id="stop-button" class="btnPlay shadowtext" title="Stop"><i class="fa fa-stop" aria-hidden="true"></i></div>
+                <div id="next-button" class="btnPlay shadowtext" title="Next"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
+            </div>
+            <div class="details">
+                <div class="poster">
+                    <img src="undefined">
+                </div>
+                <div class="info">
+                    <p class="track"></p>
+                    <p class="artist"></p>
+                    <p class="album"></p>
+                </div>
+            </div>
+        </div>
+        <div class="border-h"></div>
+        <div id="progress-bar">
+            <div id="progress"></div>
+            <span id="tooltip"></span>
+        </div>
+        <div class="border-h"></div>
+        <div class="content">
+            <div class="playlist-list-content">
+                <div class="playlist-list"></div>
+                <div class="border-h"></div>
+                <div class="menu-files">
+                    <div id="addPlaylist" class="btnMenu" title="Add">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div id="delPlaylist" class="btnMenu" title="Delete">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </div>
+                    <div id="volume" class="btnMenu" title="Volume">
+                        <i class="fa fa-volume-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="cuteslider">
+                        <input type="range" min="0" max="1" step="0.05">
+                    </div>
+                </div>
+                <div class="border-h"></div>
+                <div class="view">
+                    <canvas id="visualizer"></canvas>
+                </div>
+            </div>
+            <div class="border-v"></div>
+            <div class="playlist-files-content">
+                <div class="playlist-files">
+                    <table id="pl-files">
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="menu-files">
+                    <div id="addFiles" class="btnMenu" title="Add">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div id="delFiles" class="btnMenu" title="Delete">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

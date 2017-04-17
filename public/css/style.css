@@ -1,0 +1,307 @@
+@import url(reset.css);
+@import url(font-awesome.min.css);
+@import url(player.css);
+@import url(playlist.css);
+@import url(files.css);
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+    color: #aaa;
+    font: 12px sans-serif;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.border-h {
+    height: 2px;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    background: #343436;
+}
+
+.border-v {
+    width: 2px;
+    height: 100%;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(0,0,0,0.4);
+    background: #343436;
+}
+
+.shadowtext {
+    text-shadow: 1px 1px 2px black, 0 0 1em black; /* Параметры тени */
+}
+
+.menu-files{
+    display:flex;align-items:center;
+    height: 40px;
+    background: #333;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.content{
+    height: 100%;
+    display: flex;
+}
+
+.btnMenu {
+    cursor: pointer;
+    color: #fff;
+    font-size: 12pt;
+
+    position: relative;
+    z-index: 99999;
+
+    top: -4px;
+
+    margin-left: 15px;
+}
+
+.btnMenu i{
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    transition: all 0.4s;
+
+    position: relative;;
+    z-index: 99999;
+    top: 9px;
+    left: 4px;
+}
+
+.btnMenu:hover i{
+    color: #09c;
+}
+
+.btnMenu:active{
+    top: -2px;
+    transition: 0.1s;
+}
+
+.btnMenu::before{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 0px;
+    width: 0px;
+    padding: 1em;
+    border-radius: 100%;
+    content: "";
+    background: rgb(125,126,125); /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(125,126,125,1)), to(rgba(14,14,14,1)));
+    background: -webkit-linear-gradient(rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%);
+    background: -moz-linear-gradient(rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%);
+    background: -o-linear-gradient(rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%);
+    background: linear-gradient(rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* Opera 11.10+ */ /* IE10+ */ /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+    z-index: 999;
+    box-shadow: 0px 0px 10px 2px #666;
+    border: 1px solid #000;
+}
+
+.btnMenu::after{
+    position: absolute;
+    top:5px;
+    left:5px;
+    content: "";
+    height: 0px;
+    width: 0px;
+    padding: 0.7em;
+    border-radius: 100%;
+    background: rgb(14,14,14); /* Old browsers */
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(14,14,14,1)), to(rgba(125,126,125,1)));
+    background: -webkit-linear-gradient(rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%);
+    background: -moz-linear-gradient(rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%);
+    background: -o-linear-gradient(rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%);
+    background: linear-gradient(rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%); /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */ /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 ); /* IE6-9 */
+    z-index: 999;
+
+    border: 1px solid #000;
+}
+
+/* "Progress bar" for audio */
+#progress-bar {
+    height: 5px;
+    background: black;
+    cursor: pointer;
+}
+#progress {
+    background: #0095DD;
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+#tooltip {
+    background: #0095DD;
+    display: inline-block;
+    position: absolute;
+    font-size: 10px;
+    padding: 2px;
+    margin-top: -5px;
+    margin-left: -35px;
+    box-sizing: border-box;
+    min-width: 35px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 9;
+    opacity: 0;
+    transition: all 0.3s;
+}
+body:hover #tooltip {
+    opacity: 1;
+}
+
+.cuteslider {
+    transition: all .25s;
+    margin-left: 15px;
+    margin-top: -32px;
+    width: 140px;
+    height: 14px;
+    opacity: 1;
+    vertical-align: middle;
+    /*display: block;*/
+
+    position: relative;
+    cursor: pointer;
+}
+
+/*input[type=range] {*/
+    /*-webkit-appearance: none;*/
+
+    /*width: 100%;*/
+    /*border-radius: 8px;*/
+    /*height: 3px;*/
+    /*border: 1px solid #bdc3c7;*/
+    /*!*background-color: #fff;*!*/
+
+    /*background: #fff linear-gradient(#BCBCBC, #fff0f5);*/
+    /*!*overflow: hidden;*!*/
+/*}*/
+
+/*input[type='range']::-webkit-slider-thumb {*/
+    /*-webkit-appearance: none;*/
+    /*background-color: #999;*/
+    /*border: 1px solid #bdc3c7;*/
+    /*width: 10px;*/
+    /*height: 10px;*/
+    /*border-radius: 5px;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*input[type=range]:focus {*/
+    /*outline: none; !* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. *!*/
+/*}*/
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 26px;
+    width: 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 26px;
+    width: 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 26px;
+    width: 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+}
